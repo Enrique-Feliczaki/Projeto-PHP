@@ -56,3 +56,15 @@ function realizarLogin()
         echo "Login ou senha incorretos, Tente novamente\n";
     }
 }
+
+function realizarVendas()
+{
+    global $totalVendas;
+    echo "Informe o nome do item vendido: ";
+    $item = trim(fgets(STDIN));
+    echo "Informe o valor do item: ";
+    $valor = trim(fgets(STDIN));
+    $totalVendas += $valor;
+    registrarLog("Usuario" . $_SESSION['usuario'] . "realizou uma venda do item $item com o valor de: R$" . number_format($valor, 2, ',', '.' . '/n/n'));
+    echo "Venda realizada com Sucesso\n";
+}
