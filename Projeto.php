@@ -80,3 +80,12 @@ function cadastrarUsuario()
     registrarLog("Novo usuario cadastrado: $login");
     echo "Usuário cadastrado com sucesso\n";
 }
+
+function verificarLog()
+{
+    global $log;
+    echo "Historico de acoes:\n";
+    foreach ($log as $entrada) {
+        echo $entrada . "\n";
+    }
+}
