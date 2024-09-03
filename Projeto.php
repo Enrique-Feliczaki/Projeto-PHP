@@ -40,3 +40,19 @@ function exibirMenu()
     echo "4-Deslogar\n";
     echo "Escolha uma opcao";
 }
+
+function realizarLogin()
+{
+    echo "Digite seu login: \n";
+    $login = trim(fgets(STDIN));
+    echo "Digite sua senha: \n";
+    $senha = trim(fgets(STDIN));
+    if (verificarLogin($login, $senha)) {
+        $_SESSION['usuario'] = $login;
+        registrarLog("Usuario $login fez login\n");
+        limparTela();
+        echo "Login Bem-Sucedido\n";
+    } else {
+        echo "Login ou senha incorretos, Tente novamente\n";
+    }
+}
