@@ -16,3 +16,23 @@ function registrarLog($mesagem)
     global $log;
     $log[] = $mesagem . "em" . date("d/m/Y H:i:s");
 }
+
+function verificarLogin($login, $senha)
+{
+    global $usuarios;
+    foreach ($usuarios as $usuario) {
+        if ($usuario[$login] === $login && $usuario[$senha] === $senha) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function exibirMenu()
+{
+    global $totalVendas;
+    echo "Bem-Vindo ao Serviço de Gerencialmento de Caixa do mano Smigol!!\n";
+    echo "Usuario Logado: \n" . $_SESSION['usuario'] . "/n";
+    echo "Total de Vendas: R$" . number_format($totalVendas, 2, ',', '.' . '/n/n');
+}
