@@ -69,6 +69,21 @@ function realizarLogin()
     }
 }
 
+function criarUsuario()
+{
+    global $usuarios;
+    limparTela();
+    echo "=== Criacao de novo Usuario ===";
+    echo "Digite o login do novo usuario\n";
+    $login = trim(fgets(STDIN));
+    foreach ($usuarios as $usuario) {
+        if ($usuario['login'] === $login) {
+            echo "Esse login ja esta em uso, tente outro\n";
+            return;
+        }
+    }
+}
+
 function realizarVendas()
 {
     global $totalVendas;
