@@ -89,3 +89,11 @@ function verificarLog()
         echo $entrada . "\n";
     }
 }
+
+
+function deslogar()
+{
+    registrarLog("Usuario" . $_SESSION['usuario'] . "realizou logout");
+    unset($_SESSION['usuario']);
+    echo "Usuario deslogado com sucesso!\n";
+}
