@@ -68,3 +68,15 @@ function realizarVendas()
     registrarLog("Usuario" . $_SESSION['usuario'] . "realizou uma venda do item $item com o valor de: R$" . number_format($valor, 2, ',', '.' . '/n/n'));
     echo "Venda realizada com Sucesso\n";
 }
+
+function cadastrarUsuario()
+{
+    global $usuarios;
+    echo "Digite o login do novo usuario: ";
+    $login = trim(fgets(STDIN));
+    echo "Digite a senha do novo usuario: ";
+    $senha = trim(fgets(STDIN));
+    $usuarios[] = ['login' => $login, 'senha' => $senha];
+    registrarLog("Novo usuario cadastrado: $login");
+    echo "Usuário cadastrado com sucesso\n";
+}
