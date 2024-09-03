@@ -28,11 +28,15 @@ function verificarLogin($login, $senha)
     return false;
 }
 
-
 function exibirMenu()
 {
     global $totalVendas;
     echo "Bem-Vindo ao Serviço de Gerencialmento de Caixa do mano Smigol!!\n";
     echo "Usuario Logado: \n" . $_SESSION['usuario'] . "/n";
     echo "Total de Vendas: R$" . number_format($totalVendas, 2, ',', '.' . '/n/n');
+    echo "1-Realizar venda\n";
+    echo "2-Cadastrar novo Usuario\n";
+    echo "3-Verificar Login\n";
+    echo "4-Deslogar\n";
+    echo "Escolha uma opcao";
 }
