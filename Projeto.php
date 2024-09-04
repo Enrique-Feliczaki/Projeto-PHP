@@ -66,6 +66,8 @@ function realizarLogin()
         } else {
             echo "Login ou senha incorreto, tente novamente\n";
         }
+    } elseif ($opcao === '2') {
+        criarUsuario();
     }
 }
 
@@ -73,15 +75,23 @@ function criarUsuario()
 {
     global $usuarios;
     limparTela();
-    echo "=== Criacao de novo Usuario ===";
+    echo "=== Criacao de novo Usuario ===\n";
     echo "Digite o login do novo usuario\n";
     $login = trim(fgets(STDIN));
     foreach ($usuarios as $usuario) {
         if ($usuario['login'] === $login) {
             echo "Esse login ja esta em uso, tente outro\n";
+            echo "\n Digite qualquer tecla para retornar ao menu de login...";
+            fgets(STDIN);
             return;
         }
     }
+    echo "Digite a senha do novo usuario\n";
+    $senha = trim(fgets(STDIN));
+    $usuarios[] = ['login' => $login, 'senha' => $senha];
+    registrarLog("Novo usuario cadastrado: $login");
+    limparTela();
+    echo "O usuario foi cadastrado com sucesso!. Faça login para continuar\n";
 }
 
 function realizarVendas()
@@ -113,6 +123,14 @@ function cadastrarUsuario()
     $login = trim(fgets(STDIN));
     if (strtolower($login) === 'voltar') {
         return;
+    }
+    foreach ($usuarios as $usuario) {
+        if ($usuario['login'] === $login) {
+            echo "Esse login ja esta em uso, tente outro.\n";
+            echo "\n Digite qualquer tecla para retornar ao menu principal...";
+            fgets(STDIN);
+            return;
+        }
     }
     echo "Digite a senha do novo usuario: ";
     $senha = trim(fgets(STDIN));
