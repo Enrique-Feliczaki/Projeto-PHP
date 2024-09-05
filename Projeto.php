@@ -34,7 +34,7 @@ function exibirMenu()
     global $totalVendas;
     limparTela();
     echo "=== Bem-Vindo ao Serviço de Gerencialmento de Caixa do mano Smigol!! ===\n";
-    echo "Usuario Logado: \n" . $_SESSION['usuario'] . "\n";
+    echo "Usuario Logado: " . $_SESSION['usuario'] . "\n";
     echo "Total de Vendas: R$" . number_format($totalVendas, 2, ',', '.') . PHP_EOL;
     echo "=========================================================================\n";
     echo "1-Realizar venda\n";
@@ -109,7 +109,7 @@ function realizarVendas()
     $valor = trim(fgets(STDIN));
 
     $totalVendas += $valor;
-    registrarLog("Usuario " . $_SESSION['usuario'] . " realizou uma venda do item $item com o valor de: R$" . number_format($valor, 2, ',', '.') . PHP_EOL);
+    registrarLog("Usuario " . $_SESSION['usuario'] . " realizou uma venda do item $entrada com o valor de: R$" . number_format($valor, 2, ',', '.') . PHP_EOL);
     limparTela();
     echo "Venda realizada com Sucesso\n";
 }
